@@ -10,6 +10,7 @@ class Hello {
   val my_value = 1 + 1  // 'val' are immutable (i.e. you cannot change the value)
   //my_value = 3  // This gives an error 'reassignment to val'
   println(my_value)  // 2
+  var ab, bc = 100  // Can declare multiple values or variables together
   val greeting: String = null // You can specify the type if you want to; the type goes after the variable name
 
   // a 'var'
@@ -137,6 +138,64 @@ class Hello {
   println("Hello"(4)) // 'o'
   println("Hello".apply(4))  // 'o', same as above
 
-  var myArray = Array(1, 4, 9, 16)
-  println(myArray)
+  val myArray = Array(1, 4, 9, 16)
+  println(myArray.deep.mkString("\n"))
+
+  // CONDITIONAL EXPRESSIONS
+  val x = 20
+  val s = if (x > 0) 1 else -1
+  println(s)
+
+  var r = 3
+  var n = 7
+  if (x > 0) { r = r * n; n -= 1}  // If multiple statements are on the same line, you need a semicolon to separate them
+
+  // Input and Output
+  //val name = readLine("Your name is ")
+  //print("Your age is ")
+  //val age = readInt()
+  //printf("Hello, %s! Next year, you will be %d.\n", name, age + 1)
+
+  // LOOPS
+  // Scala doesn't have the regular for-loop setup of initialize, do-stuff, update
+  // You can either use a regular while loop or a stranger for-loop
+  // Usually you don't use loops often in Scala; instead you process the values in a sequence by
+  // applying a function to all of them, which is done with a single method call
+  while( n > 0) {  // While Loop
+    println("This is a while loop")
+    n -= 1
+  }
+
+  var z = 5  // For loop
+  for (i <- 1 to z)  // traverses from 1 to 5 (i.e. 1, 2, 3, 4, 5)
+    println("This is a for loop")
+
+  // for Strings, you often need length - 1
+  val myString = "Hello"
+  var sum = 0
+  for (i <- 0 until myString.length) // Last value for i is s.length - 1
+    sum += myString(i)
+  println(sum)  // 500
+
+  // BASIC DATA STRUCTURES
+  val myList = List(1, 2, 3, 4)
+  println(myList)
+
+  val mySet = Set(1, 2, 3, 4)  // Sets have no duplicates
+  println(mySet)
+
+  val myTuple = ("localhost", 80)  // groups together logical collections of items without using a class
+  println(myTuple)  // access based off their position (1 based instead of 0)
+  print(myTuple._1)  // "localhost"
+  print(myTuple._2)  // 80
+  val anotherTuple = 1 -> 2  // Special way of making a Tuple with 2 values
+  print(anotherTuple)
+
+  myTuple match {
+    case ("localhost", port) => "Hello"
+    case ("host", port) => "There"
+  }
+
+  print(myTuple._1)
+
 }
